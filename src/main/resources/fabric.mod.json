@@ -19,7 +19,7 @@
     "main": [
       {
         "adapter": "kotlin",
-        "value": "net.pietrolinguini.mccourse.MCCourse"
+        "value": "net.pietrolinguini.mccourse.MCCourseMod"
       }
     ]
   },

@@ -10,6 +10,7 @@ import net.minecraft.item.ItemGroup
 import net.minecraft.util.Identifier
 import net.minecraft.util.registry.Registry
 import net.pietrolinguini.mccourse.MCCourseMod
+import net.pietrolinguini.mccourse.item.ModItemGroups
 
 object ModBlocks {
 
@@ -33,12 +34,12 @@ object ModBlocks {
     val ORICHALCUM_BLOCK = registerBlock(
         "orichalcum_block",
         Block(FabricBlockSettings.of(Material.METAL).strength(6f).requiresTool()),
-        ItemGroup.MISC
+        ModItemGroups.COURSE
     )
     val ORICHALCUM_ORE = registerBlock(
         "orichalcum_ore",
         Block(FabricBlockSettings.of(Material.STONE).strength(4.5f).requiresTool()),
-        ItemGroup.MISC
+        ModItemGroups.COURSE
     )
 
     fun registerModBlocks() {

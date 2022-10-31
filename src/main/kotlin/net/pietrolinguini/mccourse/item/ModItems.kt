@@ -10,7 +10,11 @@ import net.pietrolinguini.mccourse.MCCourseMod
 object ModItems {
 
     private fun registerItem(name: String, item: Item): Item {
-        return Registry.register(Registry.ITEM, Identifier(MCCourseMod.MOD_ID, name), item)
+        return Registry.register(
+            Registry.ITEM,
+            Identifier(MCCourseMod.MOD_ID, name),
+            item
+        )
     }
 
     val ORICHALCUM_INGOT = registerItem(

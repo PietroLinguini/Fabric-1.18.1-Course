@@ -41,6 +41,16 @@ object ModBlocks {
         Block(FabricBlockSettings.of(Material.STONE).strength(4.5f).requiresTool()),
         ModItemGroups.COURSE
     )
+    val DEEPSLATE_ORICHALCUM_ORE = registerBlock(
+        "deepslate_orichalcum_ore",
+        Block(FabricBlockSettings.of(Material.STONE).strength(5.5f).requiresTool()),
+        ModItemGroups.COURSE
+    )
+    val RAW_ORICHALCUM_BLOCK = registerBlock(
+        "raw_orichalcum_block",
+        Block(FabricBlockSettings.of(Material.METAL).strength(5.5f).requiresTool()),
+        ModItemGroups.COURSE
+    )
 
     fun registerModBlocks() {
         println("Registering Mod Blocks for " + MCCourseMod.MOD_ID)

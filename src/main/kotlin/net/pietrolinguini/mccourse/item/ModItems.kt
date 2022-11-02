@@ -33,6 +33,10 @@ object ModItems {
         "dowsing_rod",
         DowsingRodItem(FabricItemSettings().group(ModItemGroups.COURSE).maxDamage(32))
     )
+    val TURNIP = registerItem(
+        "turnip",
+        Item(FabricItemSettings().group(ModItemGroups.COURSE).food(ModFoodComponents.TURNIP))
+    )
 
 
     fun registerModItems() {

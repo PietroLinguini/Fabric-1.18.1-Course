@@ -1,14 +1,19 @@
 package net.pietrolinguini.mccourse.item.custom
 
 import net.minecraft.block.Block
-import net.minecraft.block.Blocks
+import net.minecraft.client.gui.screen.Screen
+import net.minecraft.client.item.TooltipContext
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.Item
+import net.minecraft.item.ItemStack
 import net.minecraft.item.ItemUsageContext
 import net.minecraft.text.LiteralText
+import net.minecraft.text.Text
 import net.minecraft.text.TranslatableText
 import net.minecraft.util.ActionResult
 import net.minecraft.util.math.BlockPos
+import net.minecraft.world.World
+import net.pietrolinguini.mccourse.util.ModTags
 
 class DowsingRodItem(settings: Settings?) : Item(settings) {
     override fun useOnBlock(context: ItemUsageContext?): ActionResult {
@@ -42,6 +47,19 @@ class DowsingRodItem(settings: Settings?) : Item(settings) {
         return ActionResult.SUCCESS
     }
 
+    override fun appendTooltip(
+        stack: ItemStack?,
+        world: World?,
+        tooltip: MutableList<Text>?,
+        context: TooltipContext?
+    ) {
+        if (Screen.hasShiftDown()) {
+            tooltip?.add(TranslatableText("item.mccourse.dowsing_rode_tooltip.shift"))
+        } else {
+            tooltip?.add(TranslatableText("item.mccourse.dowsing_rode_tooltip"))
+        }
+    }
+
     private fun outputValuableCoordinates(
         player: PlayerEntity?,
         blockBelow: Block,
@@ -54,6 +72,6 @@ class DowsingRodItem(settings: Settings?) : Item(settings) {
     }
 
     private fun Block.isValuableBlock(): Boolean {
-        return this in setOf(Blocks.COAL_BLOCK, Blocks.COPPER_BLOCK, Blocks.DIAMOND_ORE, Blocks.IRON_ORE)
+        return ModTags.Blocks.DOWSING_ROD_DETECTABLE_BLOCKS.contains(this)
     }
 }

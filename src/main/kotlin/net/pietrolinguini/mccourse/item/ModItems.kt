@@ -5,6 +5,7 @@ import net.minecraft.item.Item
 import net.minecraft.util.Identifier
 import net.minecraft.util.registry.Registry
 import net.pietrolinguini.mccourse.MCCourseMod
+import net.pietrolinguini.mccourse.item.custom.DowsingRodItem
 
 object ModItems {
 
@@ -27,6 +28,10 @@ object ModItems {
     val RAW_ORICHALCUM = registerItem(
         "raw_orichalcum",
         Item(FabricItemSettings().group(ModItemGroups.COURSE))
+    )
+    val DOWSING_ROD = registerItem(
+        "dowsing_rod",
+        DowsingRodItem(FabricItemSettings().group(ModItemGroups.COURSE).maxDamage(32))
     )
 
 

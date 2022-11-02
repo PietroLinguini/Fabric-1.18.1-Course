@@ -10,6 +10,7 @@ import net.minecraft.item.ItemGroup
 import net.minecraft.util.Identifier
 import net.minecraft.util.registry.Registry
 import net.pietrolinguini.mccourse.MCCourseMod
+import net.pietrolinguini.mccourse.block.custom.SpeedyBlock
 import net.pietrolinguini.mccourse.item.ModItemGroups
 
 object ModBlocks {
@@ -49,6 +50,11 @@ object ModBlocks {
     val RAW_ORICHALCUM_BLOCK = registerBlock(
         "raw_orichalcum_block",
         Block(FabricBlockSettings.of(Material.METAL).strength(5.5f).requiresTool()),
+        ModItemGroups.COURSE
+    )
+    val SPEEDY_BLOCK = registerBlock(
+        "speedy_block",
+        SpeedyBlock(FabricBlockSettings.of(Material.METAL).strength(5.5f).requiresTool()),
         ModItemGroups.COURSE
     )
 

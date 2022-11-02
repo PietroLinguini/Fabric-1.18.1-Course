@@ -37,9 +37,9 @@ class DowsingRodItem(settings: Settings?) : Item(settings) {
 
         }
 
-        context.stack.damage(1, context.player) { it?.sendToolBreakStatus(it.activeHand) }
+        context.stack.damage(1, context .player) { it?.sendToolBreakStatus(it.activeHand) }
 
-        return super.useOnBlock(context)
+        return ActionResult.SUCCESS
     }
 
     private fun outputValuableCoordinates(

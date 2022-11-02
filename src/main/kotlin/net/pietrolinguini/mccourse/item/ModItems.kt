@@ -37,6 +37,10 @@ object ModItems {
         "turnip",
         Item(FabricItemSettings().group(ModItemGroups.COURSE).food(ModFoodComponents.TURNIP))
     )
+    val COAL_SLIVER = registerItem(
+        "coal_sliver",
+        Item(FabricItemSettings().group(ModItemGroups.COURSE))
+    )
 
 
     fun registerModItems() {

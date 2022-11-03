@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings
 import net.fabricmc.fabric.api.`object`.builder.v1.block.FabricBlockSettings
 import net.minecraft.block.Block
 import net.minecraft.block.Material
+import net.minecraft.block.PressurePlateBlock
 import net.minecraft.block.SlabBlock
 import net.minecraft.item.BlockItem
 import net.minecraft.item.Item
@@ -11,7 +12,9 @@ import net.minecraft.item.ItemGroup
 import net.minecraft.util.Identifier
 import net.minecraft.util.registry.Registry
 import net.pietrolinguini.mccourse.MCCourseMod
+import net.pietrolinguini.mccourse.block.custom.ModPressurePlateBlock
 import net.pietrolinguini.mccourse.block.custom.ModStairsBlock
+import net.pietrolinguini.mccourse.block.custom.ModStoneButtonBlock
 import net.pietrolinguini.mccourse.block.custom.SpeedyBlock
 import net.pietrolinguini.mccourse.item.ModItemGroups
 
@@ -67,6 +70,16 @@ object ModBlocks {
     val ORICHALCUM_SLAB = registerBlock(
         "orichalcum_slab",
         SlabBlock(FabricBlockSettings.of(Material.METAL).strength(5.5f).requiresTool()),
+        ModItemGroups.COURSE
+    )
+    val ORICHALCUM_BUTTON = registerBlock(
+        "orichalcum_button",
+        ModStoneButtonBlock(FabricBlockSettings.of(Material.METAL).strength(5.5f).requiresTool()),
+        ModItemGroups.COURSE
+    )
+    val ORICHALCUM_PRESSURE_PLATE = registerBlock(
+        "orichalcum_pressure_plate",
+        ModPressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, FabricBlockSettings.of(Material.METAL).strength(5.5f).requiresTool()),
         ModItemGroups.COURSE
     )
 

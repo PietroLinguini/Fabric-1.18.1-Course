@@ -2,10 +2,15 @@ package net.pietrolinguini.mccourse.item
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings
 import net.minecraft.item.Item
+import net.minecraft.item.ShovelItem
+import net.minecraft.item.SwordItem
 import net.minecraft.util.Identifier
 import net.minecraft.util.registry.Registry
 import net.pietrolinguini.mccourse.MCCourseMod
 import net.pietrolinguini.mccourse.item.custom.DowsingRodItem
+import net.pietrolinguini.mccourse.item.custom.ModAxeItem
+import net.pietrolinguini.mccourse.item.custom.ModHoeItem
+import net.pietrolinguini.mccourse.item.custom.ModPickaxeItem
 
 object ModItems {
 
@@ -42,6 +47,51 @@ object ModItems {
         Item(FabricItemSettings().group(ModItemGroups.COURSE))
     )
 
+    val ORICHALCUM_PICKAXE = registerItem(
+        "orichalcum_pickaxe",
+        ModPickaxeItem(
+            ModToolMaterial.ORICHALCUM,
+            1,
+            2f,
+            FabricItemSettings().group(ModItemGroups.COURSE)
+        )
+    )
+    val ORICHALCUM_AXE = registerItem(
+        "orichalcum_axe",
+        ModAxeItem(
+            ModToolMaterial.ORICHALCUM,
+            3f,
+            1f,
+            FabricItemSettings().group(ModItemGroups.COURSE)
+        )
+    )
+    val ORICHALCUM_HOE = registerItem(
+        "orichalcum_hoe",
+        ModHoeItem(
+            ModToolMaterial.ORICHALCUM,
+            0,
+            0f,
+            FabricItemSettings().group(ModItemGroups.COURSE)
+        )
+    )
+    val ORICHALCUM_SHOVEL = registerItem(
+        "orichalcum_shovel",
+        ShovelItem(
+            ModToolMaterial.ORICHALCUM,
+            1f,
+            2f,
+            FabricItemSettings().group(ModItemGroups.COURSE)
+        )
+    )
+    val ORICHALCUM_SWORD = registerItem(
+        "orichalcum_sword",
+        SwordItem(
+            ModToolMaterial.ORICHALCUM,
+            3,
+            3f,
+            FabricItemSettings().group(ModItemGroups.COURSE)
+        )
+    )
 
     fun registerModItems() {
         println("Registering Mod Items for " + MCCourseMod.MOD_ID)

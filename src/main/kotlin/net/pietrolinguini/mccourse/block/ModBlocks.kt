@@ -15,10 +15,7 @@ import net.minecraft.item.ItemGroup
 import net.minecraft.util.Identifier
 import net.minecraft.util.registry.Registry
 import net.pietrolinguini.mccourse.MCCourseMod
-import net.pietrolinguini.mccourse.block.custom.ModPressurePlateBlock
-import net.pietrolinguini.mccourse.block.custom.ModStairsBlock
-import net.pietrolinguini.mccourse.block.custom.ModStoneButtonBlock
-import net.pietrolinguini.mccourse.block.custom.SpeedyBlock
+import net.pietrolinguini.mccourse.block.custom.*
 import net.pietrolinguini.mccourse.item.ModItemGroups
 
 object ModBlocks {
@@ -67,7 +64,10 @@ object ModBlocks {
     )
     val ORICHALCUM_STAIRS = registerBlock(
         "orichalcum_stairs",
-        ModStairsBlock(ORICHALCUM_BLOCK.defaultState, FabricBlockSettings.of(Material.METAL).strength(5.5f).requiresTool()),
+        ModStairsBlock(
+            ORICHALCUM_BLOCK.defaultState,
+            FabricBlockSettings.of(Material.METAL).strength(5.5f).requiresTool()
+        ),
         ModItemGroups.COURSE
     )
     val ORICHALCUM_SLAB = registerBlock(
@@ -82,7 +82,10 @@ object ModBlocks {
     )
     val ORICHALCUM_PRESSURE_PLATE = registerBlock(
         "orichalcum_pressure_plate",
-        ModPressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, FabricBlockSettings.of(Material.METAL).strength(5.5f).requiresTool()),
+        ModPressurePlateBlock(
+            PressurePlateBlock.ActivationRule.EVERYTHING,
+            FabricBlockSettings.of(Material.METAL).strength(5.5f).requiresTool()
+        ),
         ModItemGroups.COURSE
     )
     val ORICHALCUM_FENCE = registerBlock(
@@ -98,6 +101,16 @@ object ModBlocks {
     val ORICHALCUM_WALL = registerBlock(
         "orichalcum_wall",
         WallBlock(FabricBlockSettings.of(Material.METAL).strength(5.5f).requiresTool()),
+        ModItemGroups.COURSE
+    )
+    val CHERRY_BLOSSOM_DOOR = registerBlock(
+        "cherry_blossom_door",
+        ModDoorBlock(FabricBlockSettings.of(Material.WOOD).strength(5.5f).requiresTool().nonOpaque()),
+        ModItemGroups.COURSE
+    )
+    val CHERRY_BLOSSOM_TRAPDOOR = registerBlock(
+        "cherry_blossom_trapdoor",
+        ModTrapdoorBlock(FabricBlockSettings.of(Material.WOOD).strength(5.5f).requiresTool().nonOpaque()),
         ModItemGroups.COURSE
     )
 

@@ -21,6 +21,12 @@
         "adapter": "kotlin",
         "value": "net.pietrolinguini.mccourse.MCCourseMod"
       }
+    ],
+    "client": [
+      {
+        "adapter": "kotlin",
+        "value": "net.pietrolinguini.mccourse.MCCourseClient"
+      }
     ]
   },
   "mixins": [

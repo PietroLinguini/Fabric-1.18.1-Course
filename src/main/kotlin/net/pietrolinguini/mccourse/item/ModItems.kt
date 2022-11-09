@@ -3,14 +3,10 @@ package net.pietrolinguini.mccourse.item
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings
 import net.minecraft.item.Item
 import net.minecraft.item.ShovelItem
-import net.minecraft.item.SwordItem
 import net.minecraft.util.Identifier
 import net.minecraft.util.registry.Registry
 import net.pietrolinguini.mccourse.MCCourseMod
-import net.pietrolinguini.mccourse.item.custom.DowsingRodItem
-import net.pietrolinguini.mccourse.item.custom.ModAxeItem
-import net.pietrolinguini.mccourse.item.custom.ModHoeItem
-import net.pietrolinguini.mccourse.item.custom.ModPickaxeItem
+import net.pietrolinguini.mccourse.item.custom.*
 
 object ModItems {
 
@@ -85,10 +81,20 @@ object ModItems {
     )
     val ORICHALCUM_SWORD = registerItem(
         "orichalcum_sword",
-        SwordItem(
+        ModSlowingSwordItem(
             ModToolMaterial.ORICHALCUM,
             3,
             3f,
+            FabricItemSettings().group(ModItemGroups.COURSE)
+        )
+    )
+
+    val ORICHALCUM_PAXEL = registerItem(
+        "orichalcum_paxel",
+        ModPaxelItem(
+            ModToolMaterial.ORICHALCUM,
+            1f,
+            1f,
             FabricItemSettings().group(ModItemGroups.COURSE)
         )
     )

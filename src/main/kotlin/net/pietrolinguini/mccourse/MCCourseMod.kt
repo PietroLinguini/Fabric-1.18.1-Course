@@ -1,6 +1,7 @@
 package net.pietrolinguini.mccourse
 import net.fabricmc.api.ModInitializer
 import net.pietrolinguini.mccourse.block.ModBlocks
+import net.pietrolinguini.mccourse.enchantments.ModEnchantments
 import net.pietrolinguini.mccourse.item.ModItems
 import net.pietrolinguini.mccourse.util.ModRegistries
 
@@ -10,6 +11,8 @@ object MCCourseMod: ModInitializer {
     override fun onInitialize() {
         ModItems.registerModItems()
         ModBlocks.registerModBlocks()
+
+        ModEnchantments.registerModEnchantments()
 
         ModRegistries.registerModStuffs()
     }

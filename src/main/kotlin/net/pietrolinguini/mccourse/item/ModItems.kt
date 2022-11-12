@@ -3,6 +3,7 @@ package net.pietrolinguini.mccourse.item
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings
 import net.minecraft.entity.EquipmentSlot
 import net.minecraft.item.ArmorItem
+import net.minecraft.item.HorseArmorItem
 import net.minecraft.item.Item
 import net.minecraft.item.ShovelItem
 import net.minecraft.util.Identifier
@@ -131,6 +132,15 @@ object ModItems {
         ArmorItem(
             ModArmorMaterial.ORICHALCUM,
             EquipmentSlot.FEET,
+            FabricItemSettings().group(ModItemGroups.COURSE)
+        )
+    )
+
+    val ORICHALCUM_HORSE_ARMOR = registerItem(
+        "orichalcum_horse_armor",
+        HorseArmorItem(
+            15,
+            "orichalcum",
             FabricItemSettings().group(ModItemGroups.COURSE)
         )
     )

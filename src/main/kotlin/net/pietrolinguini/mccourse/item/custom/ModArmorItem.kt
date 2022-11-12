@@ -16,7 +16,7 @@ class ModArmorItem(material: ArmorMaterial?, slot: EquipmentSlot?, settings: Set
     ArmorItem(material, slot, settings) {
     companion object {
         val MATERIAL_TO_EFFECT_MAP =
-            mapOf(ModArmorMaterial.ORICHALCUM to StatusEffectInstance(StatusEffects.SPEED, 60, 10))
+            mapOf(ModArmorMaterial.ORICHALCUM to StatusEffectInstance(StatusEffects.HASTE, 60, 1))
     }
 
     override fun inventoryTick(stack: ItemStack?, world: World?, entity: Entity?, slot: Int, selected: Boolean) {

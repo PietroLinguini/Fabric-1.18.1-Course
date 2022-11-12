@@ -113,6 +113,12 @@ object ModBlocks {
         ModTrapdoorBlock(FabricBlockSettings.of(Material.WOOD).strength(5.5f).requiresTool().nonOpaque()),
         ModItemGroups.COURSE
     )
+    val ORICHALCUM_LAMP = registerBlock(
+        "orichalcum_lamp",
+        OrichalcumLampBlock(FabricBlockSettings.of(Material.METAL).strength(5.5f).requiresTool()
+            .luminance { if (it.get(OrichalcumLampBlock.CLICKED)) 15 else 0 }),
+        ModItemGroups.COURSE
+    )
 
     fun registerModBlocks() {
         println("Registering Mod Blocks for " + MCCourseMod.MOD_ID)

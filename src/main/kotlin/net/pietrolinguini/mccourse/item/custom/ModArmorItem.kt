@@ -20,7 +20,7 @@ class ModArmorItem(material: ArmorMaterial?, slot: EquipmentSlot?, settings: Set
     }
 
     override fun inventoryTick(stack: ItemStack?, world: World?, entity: Entity?, slot: Int, selected: Boolean) {
-        if (world != null) {
+        if (world != null && !world.isClient) {
             if (entity is PlayerEntity) {
                 if (hasFullSuitOfArmorOn(entity)) {
                     evaluateArmorEffects(entity)

@@ -145,6 +145,14 @@ object ModItems {
         )
     )
 
+    val DATA_TABLET = registerItem(
+        "data_tablet",
+        DataTabletItem(
+            FabricItemSettings().group(ModItemGroups.COURSE).maxCount(1)
+        )
+    )
+
+
     fun registerModItems() {
         println("Registering Mod Items for " + MCCourseMod.MOD_ID)
     }

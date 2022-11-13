@@ -7,21 +7,20 @@ import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.item.ItemUsageContext
+import net.minecraft.nbt.NbtCompound
 import net.minecraft.text.LiteralText
 import net.minecraft.text.Text
 import net.minecraft.text.TranslatableText
 import net.minecraft.util.ActionResult
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
+import net.pietrolinguini.mccourse.item.ModItems
+import net.pietrolinguini.mccourse.util.InventoryUtil.getFirstInventoryIndex
+import net.pietrolinguini.mccourse.util.InventoryUtil.hasStackInInventory
 import net.pietrolinguini.mccourse.util.ModTags
 
 class DowsingRodItem(settings: Settings?) : Item(settings) {
-    override fun useOnBlock(context: ItemUsageContext?): ActionResult {
-        if (context == null) {
-            System.err.println("context is null for some reason")
-            return ActionResult.FAIL
-        }
-
+    override fun useOnBlock(context: ItemUsageContext): ActionResult {
         if (context.world.isClient) {
             val positionClicked = context.blockPos
             val player = context.player
@@ -33,6 +32,11 @@ class DowsingRodItem(settings: Settings?) : Item(settings) {
                 if (blockBelow.isValuableBlock()) {
                     outputValuableCoordinates(player, blockBelow, positionClicked.down(i))
                     foundBlock = true
+
+                    if (player != null && player.hasStackInInventory(ModItems.DATA_TABLET)) {
+                        player.addNbtToDataTablet(positionClicked.add(0, -i, 0), blockBelow)
+                    }
+
                     break
                 }
             }
@@ -45,6 +49,14 @@ class DowsingRodItem(settings: Settings?) : Item(settings) {
         context.stack.damage(1, context .player) { it?.sendToolBreakStatus(it.activeHand) }
 
         return ActionResult.SUCCESS
+    }
+
+    private fun PlayerEntity.addNbtToDataTablet(pos: BlockPos, blockBelow: Block) {
+        val dataTablet = inventory.getStack(getFirstInventoryIndex(ModItems.DATA_TABLET))
+        val nbtData = NbtCompound()
+        nbtData.putString("mccourse.last_ore", "Found ${blockBelow.asItem().name.string}" +
+                " at (${pos.x}, ${pos.y}, ${pos.z})")
+        dataTablet.nbt = nbtData
     }
 
     override fun appendTooltip(

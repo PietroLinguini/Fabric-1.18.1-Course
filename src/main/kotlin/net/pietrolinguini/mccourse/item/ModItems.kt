@@ -152,6 +152,13 @@ object ModItems {
         )
     )
 
+    val BLOCK_GRABBER = registerItem(
+        "block_grabber",
+        BlockGrabberItem(
+            FabricItemSettings().group(ModItemGroups.COURSE).maxCount(1)
+        )
+    )
+
 
     fun registerModItems() {
         println("Registering Mod Items for " + MCCourseMod.MOD_ID)

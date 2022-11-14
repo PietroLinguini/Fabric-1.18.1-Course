@@ -13,5 +13,12 @@ object ModModelPredicateProvider {
         ) { stack, _, _, _ ->
             if (stack.hasNbt()) 1f else 0f
         }
+
+        FabricModelPredicateProviderRegistry.register(
+            ModItems.BLOCK_GRABBER,
+            Identifier(MCCourseMod.MOD_ID, "on")
+        ) { stack, _, _, _ ->
+            if (stack.hasNbt()) 1f else 0f
+        }
     }
 }

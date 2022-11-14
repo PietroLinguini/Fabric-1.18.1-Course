@@ -2,13 +2,7 @@ package net.pietrolinguini.mccourse.block
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings
 import net.fabricmc.fabric.api.`object`.builder.v1.block.FabricBlockSettings
-import net.minecraft.block.Block
-import net.minecraft.block.FenceBlock
-import net.minecraft.block.FenceGateBlock
-import net.minecraft.block.Material
-import net.minecraft.block.PressurePlateBlock
-import net.minecraft.block.SlabBlock
-import net.minecraft.block.WallBlock
+import net.minecraft.block.*
 import net.minecraft.item.BlockItem
 import net.minecraft.item.Item
 import net.minecraft.item.ItemGroup
@@ -30,6 +24,14 @@ object ModBlocks {
 
     private fun registerBlock(name: String, block: Block, group: ItemGroup): Block {
         registerBlockItem(name, block, group)
+        return Registry.register(
+            Registry.BLOCK,
+            Identifier(MCCourseMod.MOD_ID, name),
+            block
+        )
+    }
+
+    private fun registerBlockWithoutBlocKItem(name: String, block: Block): Block {
         return Registry.register(
             Registry.BLOCK,
             Identifier(MCCourseMod.MOD_ID, name),
@@ -118,6 +120,11 @@ object ModBlocks {
         OrichalcumLampBlock(FabricBlockSettings.of(Material.METAL).strength(5.5f).requiresTool()
             .luminance { if (it.get(OrichalcumLampBlock.CLICKED)) 15 else 0 }),
         ModItemGroups.COURSE
+    )
+
+    val TURNIP_CROP = registerBlockWithoutBlocKItem(
+        "turnip_crop",
+        ModTurnipBlock(FabricBlockSettings.copy(Blocks.BEETROOTS)),
     )
 
     fun registerModBlocks() {

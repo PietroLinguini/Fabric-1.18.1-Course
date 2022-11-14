@@ -2,6 +2,7 @@ package net.pietrolinguini.mccourse.item
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings
 import net.minecraft.entity.EquipmentSlot
+import net.minecraft.item.AliasedBlockItem
 import net.minecraft.item.ArmorItem
 import net.minecraft.item.HorseArmorItem
 import net.minecraft.item.Item
@@ -9,6 +10,7 @@ import net.minecraft.item.ShovelItem
 import net.minecraft.util.Identifier
 import net.minecraft.util.registry.Registry
 import net.pietrolinguini.mccourse.MCCourseMod
+import net.pietrolinguini.mccourse.block.ModBlocks
 import net.pietrolinguini.mccourse.item.custom.*
 
 object ModItems {
@@ -156,6 +158,14 @@ object ModItems {
         "block_grabber",
         BlockGrabberItem(
             FabricItemSettings().group(ModItemGroups.COURSE).maxCount(1)
+        )
+    )
+
+    val TURNIP_SEEDS = registerItem(
+        "turnip_seeds",
+        AliasedBlockItem(
+            ModBlocks.TURNIP_CROP,
+            FabricItemSettings().group(ModItemGroups.COURSE)
         )
     )
 

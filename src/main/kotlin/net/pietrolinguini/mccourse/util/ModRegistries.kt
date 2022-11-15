@@ -1,14 +1,21 @@
 package net.pietrolinguini.mccourse.util
 
+import net.fabricmc.fabric.api.command.v1.CommandRegistrationCallback
+import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents
 import net.fabricmc.fabric.api.registry.FuelRegistry
 import net.minecraft.block.ComposterBlock
 import net.pietrolinguini.mccourse.MCCourseMod
+import net.pietrolinguini.mccourse.command.ReturnHomeCommand
+import net.pietrolinguini.mccourse.command.SetHomeCommand
+import net.pietrolinguini.mccourse.event.ModPlayerEventCopyFrom
 import net.pietrolinguini.mccourse.item.ModItems
 
 object ModRegistries {
     fun registerModStuffs() {
         registerFuels()
         registerModComposterChances()
+        registerCommands()
+        registerEvents()
     }
 
     private fun registerFuels() {
@@ -22,5 +29,14 @@ object ModRegistries {
     private fun registerModComposterChances() {
         ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(ModItems.TURNIP_SEEDS, 0.35f)
         ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(ModItems.TURNIP, 0.65f)
+    }
+
+    private fun registerCommands() {
+        CommandRegistrationCallback.EVENT.register(SetHomeCommand::register)
+        CommandRegistrationCallback.EVENT.register(ReturnHomeCommand::register)
+    }
+
+    private fun registerEvents() {
+        ServerPlayerEvents.COPY_FROM.register(ModPlayerEventCopyFrom())
     }
 }

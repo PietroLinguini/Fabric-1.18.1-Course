@@ -8,6 +8,7 @@ import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.item.ItemUsageContext
 import net.minecraft.nbt.NbtCompound
+import net.minecraft.sound.SoundCategory
 import net.minecraft.text.LiteralText
 import net.minecraft.text.Text
 import net.minecraft.text.TranslatableText
@@ -15,6 +16,7 @@ import net.minecraft.util.ActionResult
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 import net.pietrolinguini.mccourse.item.ModItems
+import net.pietrolinguini.mccourse.sound.ModSounds
 import net.pietrolinguini.mccourse.util.InventoryUtil.getFirstInventoryIndex
 import net.pietrolinguini.mccourse.util.InventoryUtil.hasStackInInventory
 import net.pietrolinguini.mccourse.util.ModTags
@@ -37,6 +39,15 @@ class DowsingRodItem(settings: Settings?) : Item(settings) {
                         player.addNbtToDataTablet(positionClicked.add(0, -i, 0), blockBelow)
                     }
 
+                    context.world.playSound(
+                        player,
+                        positionClicked,
+                        ModSounds.DOWSING_ROD_FOUND_ORE,
+                        SoundCategory.BLOCKS,
+                        1.0f,
+                        1.0f
+                    )
+
                     break
                 }
             }
@@ -46,7 +57,7 @@ class DowsingRodItem(settings: Settings?) : Item(settings) {
 
         }
 
-        context.stack.damage(1, context .player) { it?.sendToolBreakStatus(it.activeHand) }
+        context.stack.damage(1, context.player) { it?.sendToolBreakStatus(it.activeHand) }
 
         return ActionResult.SUCCESS
     }
@@ -54,8 +65,10 @@ class DowsingRodItem(settings: Settings?) : Item(settings) {
     private fun PlayerEntity.addNbtToDataTablet(pos: BlockPos, blockBelow: Block) {
         val dataTablet = inventory.getStack(getFirstInventoryIndex(ModItems.DATA_TABLET))
         val nbtData = NbtCompound()
-        nbtData.putString("mccourse.last_ore", "Found ${blockBelow.asItem().name.string}" +
-                " at (${pos.x}, ${pos.y}, ${pos.z})")
+        nbtData.putString(
+            "mccourse.last_ore", "Found ${blockBelow.asItem().name.string}" +
+                    " at (${pos.x}, ${pos.y}, ${pos.z})"
+        )
         dataTablet.nbt = nbtData
     }
 

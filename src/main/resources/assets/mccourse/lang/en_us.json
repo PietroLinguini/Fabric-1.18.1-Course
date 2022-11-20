@@ -46,5 +46,7 @@
 
   "item.mccourse.dowsing_rod.no_valuables": "No valuables found!",
 
-  "enchantment.mccourse.lightning_striker": "Lightning Striker"
+  "enchantment.mccourse.lightning_striker": "Lightning Striker",
+
+  "mccourse.dowsing_rod_found_ore": "Your dowsing rod found ore"
 }

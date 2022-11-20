@@ -12,6 +12,7 @@ import net.minecraft.util.registry.Registry
 import net.pietrolinguini.mccourse.MCCourseMod
 import net.pietrolinguini.mccourse.block.ModBlocks
 import net.pietrolinguini.mccourse.item.custom.*
+import net.pietrolinguini.mccourse.sound.ModSounds
 
 object ModItems {
 
@@ -166,6 +167,15 @@ object ModItems {
         AliasedBlockItem(
             ModBlocks.TURNIP_CROP,
             FabricItemSettings().group(ModItemGroups.COURSE)
+        )
+    )
+
+    val BAR_BRAWL_MUSIC_DISC = registerItem(
+        "bar_brawl_music_disc",
+        ModMusicDiscItem(
+            9,
+            ModSounds.BAR_BRAWL,
+            FabricItemSettings().group(ModItemGroups.COURSE).maxCount(1)
         )
     )
 

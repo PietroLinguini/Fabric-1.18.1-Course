@@ -25,6 +25,8 @@ object ModSounds {
         ORICHALCUM_LAMP_FALL
     )
 
+    val BAR_BRAWL = registerSoundEvent("bar_brawl")
+
     private fun registerSoundEvent(name: String): SoundEvent {
         val id = Identifier(MCCourseMod.MOD_ID, name)
         return Registry.register(Registry.SOUND_EVENT, id, SoundEvent(id))

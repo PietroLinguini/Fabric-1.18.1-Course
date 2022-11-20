@@ -3,6 +3,7 @@ package net.pietrolinguini.mccourse.block
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings
 import net.fabricmc.fabric.api.`object`.builder.v1.block.FabricBlockSettings
 import net.minecraft.block.*
+import net.minecraft.entity.effect.StatusEffects
 import net.minecraft.item.BlockItem
 import net.minecraft.item.Item
 import net.minecraft.item.ItemGroup
@@ -125,6 +126,12 @@ object ModBlocks {
     val TURNIP_CROP = registerBlockWithoutBlocKItem(
         "turnip_crop",
         ModTurnipBlock(FabricBlockSettings.copy(Blocks.BEETROOTS)),
+    )
+
+    val PINK_ROSE = registerBlock(
+        "pink_rose",
+        FlowerBlock(StatusEffects.GLOWING, 8, FabricBlockSettings.copy(Blocks.PINK_TULIP)),
+        ModItemGroups.COURSE
     )
 
     fun registerModBlocks() {

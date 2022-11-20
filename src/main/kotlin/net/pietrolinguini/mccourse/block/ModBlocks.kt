@@ -12,6 +12,7 @@ import net.minecraft.util.registry.Registry
 import net.pietrolinguini.mccourse.MCCourseMod
 import net.pietrolinguini.mccourse.block.custom.*
 import net.pietrolinguini.mccourse.item.ModItemGroups
+import net.pietrolinguini.mccourse.sound.ModSounds
 
 object ModBlocks {
 
@@ -119,7 +120,8 @@ object ModBlocks {
     val ORICHALCUM_LAMP = registerBlock(
         "orichalcum_lamp",
         OrichalcumLampBlock(FabricBlockSettings.of(Material.METAL).strength(5.5f).requiresTool()
-            .luminance { if (it.get(OrichalcumLampBlock.CLICKED)) 15 else 0 }),
+            .luminance { if (it.get(OrichalcumLampBlock.CLICKED)) 15 else 0 }.sounds(ModSounds.ORICHALCUM_SOUNDS)
+        ),
         ModItemGroups.COURSE
     )
 

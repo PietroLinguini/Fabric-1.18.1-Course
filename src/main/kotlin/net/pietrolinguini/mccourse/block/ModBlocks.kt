@@ -134,6 +134,11 @@ object ModBlocks {
         ModItemGroups.COURSE
     )
 
+    val POTTED_PINK_ROSE = registerBlockWithoutBlocKItem(
+        "potted_pink_rose",
+        FlowerPotBlock(PINK_ROSE, FabricBlockSettings.copy(Blocks.POTTED_ALLIUM)),
+    )
+
     fun registerModBlocks() {
         println("Registering Mod Blocks for " + MCCourseMod.MOD_ID)
     }

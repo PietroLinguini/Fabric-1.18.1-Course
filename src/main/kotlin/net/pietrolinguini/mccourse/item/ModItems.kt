@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings
 import net.minecraft.entity.EquipmentSlot
 import net.minecraft.item.AliasedBlockItem
 import net.minecraft.item.ArmorItem
+import net.minecraft.item.BowItem
 import net.minecraft.item.HorseArmorItem
 import net.minecraft.item.Item
 import net.minecraft.item.ShovelItem
@@ -182,6 +183,13 @@ object ModItems {
     val ORICHALCUM_STAFF = registerItem(
         "orichalcum_staff",
         Item(
+            FabricItemSettings().group(ModItemGroups.COURSE).maxCount(1)
+        )
+    )
+
+    val ORICHALCUM_BOW = registerItem(
+        "orichalcum_bow",
+        BowItem(
             FabricItemSettings().group(ModItemGroups.COURSE).maxCount(1)
         )
     )

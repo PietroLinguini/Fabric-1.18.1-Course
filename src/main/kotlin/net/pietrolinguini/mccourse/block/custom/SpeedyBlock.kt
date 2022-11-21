@@ -7,12 +7,14 @@ import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.effect.StatusEffectInstance
 import net.minecraft.entity.effect.StatusEffects
 import net.minecraft.entity.player.PlayerEntity
+import net.minecraft.particle.ParticleTypes
 import net.minecraft.text.LiteralText
 import net.minecraft.util.ActionResult
 import net.minecraft.util.Hand
 import net.minecraft.util.hit.BlockHitResult
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
+import java.util.*
 
 class SpeedyBlock(settings: Settings?) : Block(settings) {
     override fun onSteppedOn(world: World?, pos: BlockPos?, state: BlockState?, entity: Entity?) {
@@ -56,5 +58,57 @@ class SpeedyBlock(settings: Settings?) : Block(settings) {
         }
 
         return ActionResult.PASS
+    }
+
+    override fun randomDisplayTick(state: BlockState, world: World, pos: BlockPos, random: Random) {
+        val chance = 0.35f
+
+        if (chance < random.nextFloat()) {
+            world.addParticle(
+                ParticleTypes.SMOKE,
+                pos.x + random.nextDouble(),
+                pos.y + 0.5,
+                pos.z + random.nextDouble(),
+                0.0,
+                0.015 + random.nextDouble(0.075),
+                0.0
+            )
+        }
+
+        if (chance < random.nextFloat()) {
+            world.addParticle(
+                ParticleTypes.SMOKE,
+                pos.x + random.nextDouble(),
+                pos.y + 0.5,
+                pos.z + random.nextDouble(),
+                0.0,
+                0.015 + random.nextDouble(0.075),
+                0.0
+            )
+        }
+
+        if (chance < random.nextFloat()) {
+            world.addParticle(
+                ParticleTypes.SMOKE,
+                pos.x + random.nextDouble(),
+                pos.y + 0.5,
+                pos.z + random.nextDouble(),
+                0.0,
+                0.015 + random.nextDouble(0.075),
+                0.0
+            )
+        }
+
+        if (chance < random.nextFloat()) {
+            world.addParticle(
+                ParticleTypes.SMOKE,
+                pos.x + random.nextDouble(),
+                pos.y + 0.5,
+                pos.z + random.nextDouble(),
+                0.0,
+                0.015 + random.nextDouble(0.075),
+                0.0
+            )
+        }
     }
 }

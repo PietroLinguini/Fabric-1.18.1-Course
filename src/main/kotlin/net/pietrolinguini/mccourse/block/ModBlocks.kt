@@ -11,6 +11,7 @@ import net.minecraft.util.Identifier
 import net.minecraft.util.registry.Registry
 import net.pietrolinguini.mccourse.MCCourseMod
 import net.pietrolinguini.mccourse.block.custom.*
+import net.pietrolinguini.mccourse.fluid.ModFluids
 import net.pietrolinguini.mccourse.item.ModItemGroups
 import net.pietrolinguini.mccourse.sound.ModSounds
 
@@ -145,6 +146,11 @@ object ModBlocks {
         "orichalcum_blaster",
         OrichalcumBlasterBlock(FabricBlockSettings.of(Material.METAL).nonOpaque()),
         ModItemGroups.COURSE
+    )
+
+    val HONEY_FLUID_BLOCK = registerBlockWithoutBlocKItem(
+        "honey_fluid_block",
+        ModFluidBlock(ModFluids.HONEY_STILL, FabricBlockSettings.of(Material.WATER).noCollision().nonOpaque().dropsNothing()),
     )
 
     fun registerModBlocks() {

@@ -2,8 +2,11 @@ package net.pietrolinguini.mccourse
 
 import net.fabricmc.api.ClientModInitializer
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap
+import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry
+import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler
 import net.minecraft.client.render.RenderLayer
 import net.pietrolinguini.mccourse.block.ModBlocks
+import net.pietrolinguini.mccourse.fluid.ModFluids
 import net.pietrolinguini.mccourse.util.ModModelPredicateProvider
 
 object MCCourseClient : ClientModInitializer {
@@ -16,5 +19,22 @@ object MCCourseClient : ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.ORICHALCUM_BLASTER, RenderLayer.getCutout())
 
         ModModelPredicateProvider.registerModModels()
+
+        FluidRenderHandlerRegistry.INSTANCE.register(
+            ModFluids.HONEY_STILL, SimpleFluidRenderHandler(
+                SimpleFluidRenderHandler.WATER_STILL,
+                SimpleFluidRenderHandler.WATER_FLOWING,
+                SimpleFluidRenderHandler.WATER_OVERLAY,
+                0xe9860c
+            )
+        )
+        FluidRenderHandlerRegistry.INSTANCE.register(
+            ModFluids.HONEY_FLOWING, SimpleFluidRenderHandler(
+                SimpleFluidRenderHandler.WATER_STILL,
+                SimpleFluidRenderHandler.WATER_FLOWING,
+                SimpleFluidRenderHandler.WATER_OVERLAY,
+                0xe9860c
+            )
+        )
     }
 }

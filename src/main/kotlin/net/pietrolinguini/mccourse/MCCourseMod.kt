@@ -3,6 +3,7 @@ import net.fabricmc.api.ModInitializer
 import net.pietrolinguini.mccourse.block.ModBlocks
 import net.pietrolinguini.mccourse.enchantments.ModEnchantments
 import net.pietrolinguini.mccourse.item.ModItems
+import net.pietrolinguini.mccourse.util.ModLootTableModifiers
 import net.pietrolinguini.mccourse.util.ModRegistries
 
 @Suppress("UNUSED")
@@ -15,5 +16,7 @@ object MCCourseMod: ModInitializer {
         ModEnchantments.registerModEnchantments()
 
         ModRegistries.registerModStuffs()
+
+        ModLootTableModifiers.modifyLootTables()
     }
 }

@@ -141,6 +141,12 @@ object ModBlocks {
         FlowerPotBlock(PINK_ROSE, FabricBlockSettings.copy(Blocks.POTTED_ALLIUM)),
     )
 
+    val ORICHALCUM_BLASTER = registerBlock(
+        "orichalcum_blaster",
+        OrichalcumBlasterBlock(FabricBlockSettings.of(Material.METAL).nonOpaque()),
+        ModItemGroups.COURSE
+    )
+
     fun registerModBlocks() {
         println("Registering Mod Blocks for " + MCCourseMod.MOD_ID)
     }

@@ -179,6 +179,13 @@ object ModItems {
         )
     )
 
+    val ORICHALCUM_STAFF = registerItem(
+        "orichalcum_staff",
+        Item(
+            FabricItemSettings().group(ModItemGroups.COURSE).maxCount(1)
+        )
+    )
+
 
     fun registerModItems() {
         println("Registering Mod Items for " + MCCourseMod.MOD_ID)

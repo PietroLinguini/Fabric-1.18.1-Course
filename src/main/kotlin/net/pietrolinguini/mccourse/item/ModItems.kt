@@ -27,6 +27,7 @@ object ModItems {
         )
     }
 
+    @JvmField
     val ORICHALCUM_INGOT = registerItem(
         "orichalcum_ingot",
         Item(FabricItemSettings().group(ModItemGroups.COURSE))
@@ -47,11 +48,13 @@ object ModItems {
         "turnip",
         Item(FabricItemSettings().group(ModItemGroups.COURSE).food(ModFoodComponents.TURNIP))
     )
+    @JvmField
     val COAL_SLIVER = registerItem(
         "coal_sliver",
         Item(FabricItemSettings().group(ModItemGroups.COURSE))
     )
 
+    @JvmField
     val ORICHALCUM_PICKAXE = registerItem(
         "orichalcum_pickaxe",
         ModPickaxeItem(

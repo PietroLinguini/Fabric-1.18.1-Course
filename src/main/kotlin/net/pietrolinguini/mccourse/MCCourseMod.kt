@@ -1,6 +1,7 @@
 package net.pietrolinguini.mccourse
 import net.fabricmc.api.ModInitializer
 import net.pietrolinguini.mccourse.block.ModBlocks
+import net.pietrolinguini.mccourse.block.entity.ModBlockEntities
 import net.pietrolinguini.mccourse.enchantments.ModEnchantments
 import net.pietrolinguini.mccourse.item.ModItems
 import net.pietrolinguini.mccourse.painting.ModPaintings
@@ -20,5 +21,7 @@ object MCCourseMod: ModInitializer {
 
         ModLootTableModifiers.modifyLootTables()
         ModPaintings.registerPaintings()
+
+        ModBlockEntities.registerAllEntities()
     }
 }

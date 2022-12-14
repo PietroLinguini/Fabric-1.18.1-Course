@@ -4,9 +4,12 @@ import net.fabricmc.api.ClientModInitializer
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry
 import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler
+import net.fabricmc.fabric.api.client.screenhandler.v1.ScreenRegistry
 import net.minecraft.client.render.RenderLayer
 import net.pietrolinguini.mccourse.block.ModBlocks
 import net.pietrolinguini.mccourse.fluid.ModFluids
+import net.pietrolinguini.mccourse.screen.ModScreenHandlers
+import net.pietrolinguini.mccourse.screen.OrichalcumBlasterScreen
 import net.pietrolinguini.mccourse.util.ModModelPredicateProvider
 
 object MCCourseClient : ClientModInitializer {
@@ -36,5 +39,7 @@ object MCCourseClient : ClientModInitializer {
                 0xe9860c
             )
         )
+
+        ScreenRegistry.register(ModScreenHandlers.ORICHALCUM_BLASTER_SCREEN_HANDLER, ::OrichalcumBlasterScreen)
     }
 }

@@ -153,6 +153,34 @@ object ModBlocks {
         ModFluidBlock(ModFluids.HONEY_STILL, FabricBlockSettings.of(Material.WATER).noCollision().nonOpaque().dropsNothing()),
     )
 
+    val CHERRY_BLOSSOM_LOG = registerBlock(
+        "cherry_blossom_log",
+        PillarBlock(FabricBlockSettings.copy(Blocks.OAK_LOG)),
+        ModItemGroups.COURSE
+    )
+    val CHERRY_BLOSSOM_WOOD = registerBlock(
+        "cherry_blossom_wood",
+        PillarBlock(FabricBlockSettings.copy(Blocks.OAK_WOOD)),
+        ModItemGroups.COURSE
+    )
+
+    val STRIPPED_CHERRY_BLOSSOM_LOG = registerBlock(
+        "stripped_cherry_blossom_log",
+        PillarBlock(FabricBlockSettings.copy(Blocks.STRIPPED_OAK_LOG)),
+        ModItemGroups.COURSE
+    )
+    val STRIPPED_CHERRY_BLOSSOM_WOOD = registerBlock(
+        "stripped_cherry_blossom_wood",
+        PillarBlock(FabricBlockSettings.copy(Blocks.STRIPPED_OAK_WOOD)),
+        ModItemGroups.COURSE
+    )
+
+    val CHERRY_BLOSSOM_PLANKS = registerBlock(
+        "cherry_blossom_planks",
+        Block(FabricBlockSettings.copy(Blocks.OAK_PLANKS)),
+        ModItemGroups.COURSE
+    )
+
     fun registerModBlocks() {
         println("Registering Mod Blocks for " + MCCourseMod.MOD_ID)
     }

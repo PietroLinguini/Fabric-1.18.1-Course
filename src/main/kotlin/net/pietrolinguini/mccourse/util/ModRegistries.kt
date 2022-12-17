@@ -3,8 +3,10 @@ package net.pietrolinguini.mccourse.util
 import net.fabricmc.fabric.api.command.v1.CommandRegistrationCallback
 import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents
 import net.fabricmc.fabric.api.registry.FuelRegistry
+import net.fabricmc.fabric.api.registry.StrippableBlockRegistry
 import net.minecraft.block.ComposterBlock
 import net.pietrolinguini.mccourse.MCCourseMod
+import net.pietrolinguini.mccourse.block.ModBlocks
 import net.pietrolinguini.mccourse.command.ReturnHomeCommand
 import net.pietrolinguini.mccourse.command.SetHomeCommand
 import net.pietrolinguini.mccourse.event.ModPlayerEventCopyFrom
@@ -16,6 +18,7 @@ object ModRegistries {
         registerModComposterChances()
         registerCommands()
         registerEvents()
+        registerStrippables()
     }
 
     private fun registerFuels() {
@@ -38,5 +41,10 @@ object ModRegistries {
 
     private fun registerEvents() {
         ServerPlayerEvents.COPY_FROM.register(ModPlayerEventCopyFrom())
+    }
+
+    private fun registerStrippables() {
+        StrippableBlockRegistry.register(ModBlocks.CHERRY_BLOSSOM_LOG, ModBlocks.STRIPPED_CHERRY_BLOSSOM_LOG)
+        StrippableBlockRegistry.register(ModBlocks.CHERRY_BLOSSOM_WOOD, ModBlocks.STRIPPED_CHERRY_BLOSSOM_WOOD)
     }
 }

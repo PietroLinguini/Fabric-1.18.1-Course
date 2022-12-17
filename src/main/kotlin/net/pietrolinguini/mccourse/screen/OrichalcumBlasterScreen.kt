@@ -8,11 +8,11 @@ import net.minecraft.entity.player.PlayerInventory
 import net.minecraft.text.Text
 import net.minecraft.util.Identifier
 
-class OrichalcumBlasterScreen(handler: OrichalcumBlasterScreenHandler, inventory: PlayerInventory, title: Text):
+class OrichalcumBlasterScreen(handler: OrichalcumBlasterScreenHandler, inventory: PlayerInventory, title: Text) :
     HandledScreen<OrichalcumBlasterScreenHandler>(handler, inventory, title) {
-        companion object {
-            private val TEXTURE = Identifier("mccourse", "textures/gui/orichalcum_blaster.png")
-        }
+    companion object {
+        private val TEXTURE = Identifier("mccourse", "textures/gui/orichalcum_blaster.png")
+    }
 
     override fun init() {
         super.init()
@@ -26,6 +26,17 @@ class OrichalcumBlasterScreen(handler: OrichalcumBlasterScreenHandler, inventory
         val x = (width - backgroundWidth) / 2
         val y = (height - backgroundHeight) / 2
         drawTexture(matrices, x, y, 0, 0, backgroundWidth, backgroundHeight)
+
+        if (handler.isCrafting())
+            drawTexture(matrices, x + 84, y + 22, 176, 14, handler.getBlastProgress(), 36)
+
+        println("scaledFuelProgress = ${handler.getFuelProgress()}")
+
+        if (handler.hasFuel())
+            drawTexture(
+                matrices, x + 18, y + 33 + 12 - handler.getFuelProgress(), 176,
+                12 - handler.getFuelProgress(), 14, handler.getFuelProgress() + 1
+            )
     }
 
     override fun render(matrices: MatrixStack, mouseX: Int, mouseY: Int, delta: Float) {

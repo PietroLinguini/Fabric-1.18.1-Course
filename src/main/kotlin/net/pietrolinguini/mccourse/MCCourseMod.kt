@@ -5,6 +5,7 @@ import net.pietrolinguini.mccourse.block.entity.ModBlockEntities
 import net.pietrolinguini.mccourse.enchantments.ModEnchantments
 import net.pietrolinguini.mccourse.item.ModItems
 import net.pietrolinguini.mccourse.painting.ModPaintings
+import net.pietrolinguini.mccourse.recipe.ModRecipes
 import net.pietrolinguini.mccourse.util.ModLootTableModifiers
 import net.pietrolinguini.mccourse.util.ModRegistries
 
@@ -21,6 +22,8 @@ object MCCourseMod: ModInitializer {
 
         ModLootTableModifiers.modifyLootTables()
         ModPaintings.registerPaintings()
+
+        ModRecipes.register()
 
         ModBlockEntities.registerAllEntities()
     }

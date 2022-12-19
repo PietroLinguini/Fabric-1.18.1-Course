@@ -45,6 +45,15 @@ object ModConfiguredFeatures {
             createRandomPatchFeatureConfig(BlockStateProvider.of(ModBlocks.PINK_ROSE), 64)
         ))
 
+    val OVERWORLD_ORICHALCUM_ORES = listOf(
+        OreFeatureConfig.createTarget(
+            OreConfiguredFeatures.STONE_ORE_REPLACEABLES, ModBlocks.ORICHALCUM_ORE.defaultState),
+        OreFeatureConfig.createTarget(
+            OreConfiguredFeatures.DEEPSLATE_ORE_REPLACEABLES, ModBlocks.DEEPSLATE_ORICHALCUM_ORE.defaultState))
+
+    val ORICHALCUM_ORE = register("orichalcum_ore",
+        Feature.ORE.configure(OreFeatureConfig(OVERWORLD_ORICHALCUM_ORES, 9)))
+
     private fun createRandomPatchFeatureConfig(block: BlockStateProvider, tries: Int): RandomPatchFeatureConfig =
         ConfiguredFeatures.createRandomPatchFeatureConfig(tries,
             Feature.SIMPLE_BLOCK.configure(SimpleBlockFeatureConfig(block)).withInAirFilter())

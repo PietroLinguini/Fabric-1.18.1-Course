@@ -9,6 +9,7 @@ import net.minecraft.item.BucketItem
 import net.minecraft.item.HorseArmorItem
 import net.minecraft.item.Item
 import net.minecraft.item.ShovelItem
+import net.minecraft.item.SignItem
 import net.minecraft.util.Identifier
 import net.minecraft.util.registry.Registry
 import net.pietrolinguini.mccourse.MCCourseMod
@@ -48,13 +49,11 @@ object ModItems {
         "turnip",
         Item(FabricItemSettings().group(ModItemGroups.COURSE).food(ModFoodComponents.TURNIP))
     )
-    @JvmField
     val COAL_SLIVER = registerItem(
         "coal_sliver",
         Item(FabricItemSettings().group(ModItemGroups.COURSE))
     )
 
-    @JvmField
     val ORICHALCUM_PICKAXE = registerItem(
         "orichalcum_pickaxe",
         ModPickaxeItem(
@@ -207,6 +206,14 @@ object ModItems {
         )
     )
 
+    val CHERRY_BLOSSOM_SIGN = registerItem(
+        "cherry_blossom_sign",
+        SignItem(
+            FabricItemSettings().group(ModItemGroups.COURSE).maxCount(16),
+            ModBlocks.CHERRY_BLOSSOM_SIGN_BLOCK,
+            ModBlocks.CHERRY_BLOSSOM_WALL_SIGN_BLOCK
+        )
+    )
 
     fun registerModItems() {
         println("Registering Mod Items for " + MCCourseMod.MOD_ID)

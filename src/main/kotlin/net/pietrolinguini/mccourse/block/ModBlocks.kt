@@ -181,6 +181,15 @@ object ModBlocks {
         ModItemGroups.COURSE
     )
 
+    val CHERRY_BLOSSOM_WALL_SIGN_BLOCK = registerBlockWithoutBlocKItem(
+        "cherry_blossom_wall_sign",
+        WallSignBlock(FabricBlockSettings.copy(Blocks.OAK_PLANKS), ModSignTypes.CHERRY_BLOSSOM)
+    )
+    val CHERRY_BLOSSOM_SIGN_BLOCK = registerBlockWithoutBlocKItem(
+        "cherry_blossom_sign",
+        SignBlock(FabricBlockSettings.copy(Blocks.OAK_PLANKS), ModSignTypes.CHERRY_BLOSSOM)
+    )
+
     fun registerModBlocks() {
         println("Registering Mod Blocks for " + MCCourseMod.MOD_ID)
     }

@@ -40,6 +40,15 @@ object ModConfiguredFeatures {
             )
         )
 
+    val PINK_ROSE =
+        register("pink_rose", Feature.FLOWER.configure(
+            createRandomPatchFeatureConfig(BlockStateProvider.of(ModBlocks.PINK_ROSE), 64)
+        ))
+
+    private fun createRandomPatchFeatureConfig(block: BlockStateProvider, tries: Int): RandomPatchFeatureConfig =
+        ConfiguredFeatures.createRandomPatchFeatureConfig(tries,
+            Feature.SIMPLE_BLOCK.configure(SimpleBlockFeatureConfig(block)).withInAirFilter())
+
     private fun <FC : FeatureConfig> register(
         name: String,
         configuredFeature: ConfiguredFeature<FC, *>

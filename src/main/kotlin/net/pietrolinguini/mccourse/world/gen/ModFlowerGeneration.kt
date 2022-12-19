@@ -6,11 +6,9 @@ import net.minecraft.world.biome.Biome
 import net.minecraft.world.gen.GenerationStep
 import net.pietrolinguini.mccourse.world.feature.ModPlacedFeatures
 
-object ModTreeGeneration {
-    fun generateTrees() {
-        BiomeModifications.addFeature(
-            BiomeSelectors.categories(Biome.Category.PLAINS),
-            GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.CHERRY_BLOSSOM_PLACED_KEY
-        )
+object ModFlowerGeneration {
+    fun generateFlowers() {
+        BiomeModifications.addFeature(BiomeSelectors.categories(Biome.Category.PLAINS),
+            GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.PINK_ROSE_PLACED_KEY)
     }
 }

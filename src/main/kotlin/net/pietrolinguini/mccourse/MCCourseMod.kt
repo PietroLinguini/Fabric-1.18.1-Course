@@ -9,6 +9,7 @@ import net.pietrolinguini.mccourse.recipe.ModRecipes
 import net.pietrolinguini.mccourse.util.ModLootTableModifiers
 import net.pietrolinguini.mccourse.util.ModRegistries
 import net.pietrolinguini.mccourse.world.feature.ModConfiguredFeatures
+import net.pietrolinguini.mccourse.world.gen.ModWorldGen
 
 @Suppress("UNUSED")
 object MCCourseMod: ModInitializer {
@@ -29,5 +30,7 @@ object MCCourseMod: ModInitializer {
         ModRecipes.register()
 
         ModBlockEntities.registerAllEntities()
+
+        ModWorldGen.generateModWorldGen()
     }
 }

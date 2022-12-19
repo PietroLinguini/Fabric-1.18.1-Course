@@ -14,6 +14,7 @@ import net.pietrolinguini.mccourse.block.custom.*
 import net.pietrolinguini.mccourse.fluid.ModFluids
 import net.pietrolinguini.mccourse.item.ModItemGroups
 import net.pietrolinguini.mccourse.sound.ModSounds
+import net.pietrolinguini.mccourse.world.feature.tree.CherryBlossomSaplingGenerator
 
 object ModBlocks {
 
@@ -188,6 +189,17 @@ object ModBlocks {
     val CHERRY_BLOSSOM_SIGN_BLOCK = registerBlockWithoutBlocKItem(
         "cherry_blossom_sign",
         SignBlock(FabricBlockSettings.copy(Blocks.OAK_PLANKS), ModSignTypes.CHERRY_BLOSSOM)
+    )
+
+    val CHERRY_BLOSSOM_LEAVES = registerBlock(
+        "cherry_blossom_leaves",
+        LeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES)),
+        ModItemGroups.COURSE
+    )
+    val CHERRY_BLOSSOM_SAPLING = registerBlock(
+        "cherry_blossom_sapling",
+        ModSaplingBlock(CherryBlossomSaplingGenerator(), FabricBlockSettings.copy(Blocks.OAK_SAPLING)),
+        ModItemGroups.COURSE
     )
 
     fun registerModBlocks() {

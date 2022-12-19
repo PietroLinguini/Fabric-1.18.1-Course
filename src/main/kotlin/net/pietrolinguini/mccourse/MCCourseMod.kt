@@ -8,11 +8,14 @@ import net.pietrolinguini.mccourse.painting.ModPaintings
 import net.pietrolinguini.mccourse.recipe.ModRecipes
 import net.pietrolinguini.mccourse.util.ModLootTableModifiers
 import net.pietrolinguini.mccourse.util.ModRegistries
+import net.pietrolinguini.mccourse.world.feature.ModConfiguredFeatures
 
 @Suppress("UNUSED")
 object MCCourseMod: ModInitializer {
     const val MOD_ID = "mccourse"
     override fun onInitialize() {
+        ModConfiguredFeatures.registerConfiguredFeatures()
+
         ModItems.registerModItems()
         ModBlocks.registerModBlocks()
 

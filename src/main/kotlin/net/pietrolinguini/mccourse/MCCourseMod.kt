@@ -2,6 +2,7 @@ package net.pietrolinguini.mccourse
 import net.fabricmc.api.ModInitializer
 import net.pietrolinguini.mccourse.block.ModBlocks
 import net.pietrolinguini.mccourse.block.entity.ModBlockEntities
+import net.pietrolinguini.mccourse.config.ModConfigs
 import net.pietrolinguini.mccourse.enchantments.ModEnchantments
 import net.pietrolinguini.mccourse.item.ModItems
 import net.pietrolinguini.mccourse.painting.ModPaintings
@@ -15,6 +16,8 @@ import net.pietrolinguini.mccourse.world.gen.ModWorldGen
 object MCCourseMod: ModInitializer {
     const val MOD_ID = "mccourse"
     override fun onInitialize() {
+        ModConfigs.registerConfigs()
+
         ModConfiguredFeatures.registerConfiguredFeatures()
 
         ModItems.registerModItems()

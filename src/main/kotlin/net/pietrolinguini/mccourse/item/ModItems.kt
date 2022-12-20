@@ -215,6 +215,11 @@ object ModItems {
         )
     )
 
+    val MAGIC_ORICHALCUM_DUST = registerItem(
+        "magic_orichalcum_dust",
+        Item(FabricItemSettings().group(ModItemGroups.COURSE))
+    )
+
     fun registerModItems() {
         println("Registering Mod Items for " + MCCourseMod.MOD_ID)
     }

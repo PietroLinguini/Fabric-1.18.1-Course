@@ -8,6 +8,7 @@ import net.minecraft.item.BlockItem
 import net.minecraft.item.Item
 import net.minecraft.item.ItemGroup
 import net.minecraft.util.Identifier
+import net.minecraft.util.math.intprovider.UniformIntProvider
 import net.minecraft.util.registry.Registry
 import net.pietrolinguini.mccourse.MCCourseMod
 import net.pietrolinguini.mccourse.block.custom.*
@@ -50,7 +51,7 @@ object ModBlocks {
     )
     val ORICHALCUM_ORE = registerBlock(
         "orichalcum_ore",
-        Block(FabricBlockSettings.of(Material.STONE).strength(4.5f).requiresTool()),
+        OreBlock(FabricBlockSettings.of(Material.STONE).strength(4.5f).requiresTool(), UniformIntProvider.create(3, 7)),
         ModItemGroups.COURSE
     )
     val DEEPSLATE_ORICHALCUM_ORE = registerBlock(

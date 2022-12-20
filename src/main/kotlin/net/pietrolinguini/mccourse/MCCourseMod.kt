@@ -3,6 +3,7 @@ import net.fabricmc.api.ModInitializer
 import net.pietrolinguini.mccourse.block.ModBlocks
 import net.pietrolinguini.mccourse.block.entity.ModBlockEntities
 import net.pietrolinguini.mccourse.config.ModConfigs
+import net.pietrolinguini.mccourse.effect.ModEffects
 import net.pietrolinguini.mccourse.enchantments.ModEnchantments
 import net.pietrolinguini.mccourse.item.ModItems
 import net.pietrolinguini.mccourse.painting.ModPaintings
@@ -35,5 +36,7 @@ object MCCourseMod: ModInitializer {
         ModBlockEntities.registerAllEntities()
 
         ModWorldGen.generateModWorldGen()
+
+        ModEffects.registerModEffects()
     }
 }

@@ -9,5 +9,8 @@
     "ModEntityDataSaver",
     "BlockEntityTypeMixin",
     "SignTypeAccessor"
+  ],
+  "client": [
+    "ScreenMixin"
   ]
 }

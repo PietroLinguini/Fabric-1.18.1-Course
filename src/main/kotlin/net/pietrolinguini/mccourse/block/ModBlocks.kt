@@ -203,6 +203,12 @@ object ModBlocks {
         ModItemGroups.COURSE
     )
 
+    val WINTER_WINDOW = registerBlock(
+        "winter_window",
+        GlassBlock(FabricBlockSettings.copy(Blocks.GLASS).nonOpaque().strength(3f)),
+        ModItemGroups.COURSE
+    )
+
     fun registerModBlocks() {
         println("Registering Mod Blocks for " + MCCourseMod.MOD_ID)
     }

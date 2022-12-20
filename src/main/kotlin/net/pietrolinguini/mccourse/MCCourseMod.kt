@@ -7,6 +7,7 @@ import net.pietrolinguini.mccourse.effect.ModEffects
 import net.pietrolinguini.mccourse.enchantments.ModEnchantments
 import net.pietrolinguini.mccourse.item.ModItems
 import net.pietrolinguini.mccourse.painting.ModPaintings
+import net.pietrolinguini.mccourse.potion.ModPotions
 import net.pietrolinguini.mccourse.recipe.ModRecipes
 import net.pietrolinguini.mccourse.util.ModLootTableModifiers
 import net.pietrolinguini.mccourse.util.ModRegistries
@@ -38,5 +39,6 @@ object MCCourseMod: ModInitializer {
         ModWorldGen.generateModWorldGen()
 
         ModEffects.registerModEffects()
+        ModPotions.registerPotions()
     }
 }

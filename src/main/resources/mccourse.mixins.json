@@ -8,7 +8,8 @@
   "mixins": [
     "ModEntityDataSaver",
     "BlockEntityTypeMixin",
-    "SignTypeAccessor"
+    "SignTypeAccessor",
+    "BrewingRecipeRegistryMixin"
   ],
   "client": [
     "ScreenMixin"

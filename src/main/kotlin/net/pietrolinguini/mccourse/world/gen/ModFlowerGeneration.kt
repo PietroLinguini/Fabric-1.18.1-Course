@@ -9,6 +9,6 @@ import net.pietrolinguini.mccourse.world.feature.ModPlacedFeatures
 object ModFlowerGeneration {
     fun generateFlowers() {
         BiomeModifications.addFeature(BiomeSelectors.categories(Biome.Category.PLAINS),
-            GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.PINK_ROSE_PLACED_KEY)
+            GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.PINK_ROSE_PLACED.key.get())
     }
 }

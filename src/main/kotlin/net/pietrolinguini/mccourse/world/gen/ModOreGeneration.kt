@@ -8,6 +8,6 @@ import net.pietrolinguini.mccourse.world.feature.ModPlacedFeatures
 object ModOreGeneration {
     fun generateOres() {
         BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(),
-            GenerationStep.Feature.UNDERGROUND_ORES, ModPlacedFeatures.ORICHALCUM_ORE_PLACED_KEY)
+            GenerationStep.Feature.UNDERGROUND_ORES, ModPlacedFeatures.ORICHALCUM_ORE_PLACED.key.get())
     }
 }

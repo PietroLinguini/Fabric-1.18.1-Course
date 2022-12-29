@@ -1,10 +1,10 @@
 package net.pietrolinguini.mccourse.util
 
-import net.fabricmc.fabric.api.tag.TagFactory
 import net.minecraft.block.Block
 import net.minecraft.item.Item
-import net.minecraft.tag.Tag
+import net.minecraft.tag.TagKey
 import net.minecraft.util.Identifier
+import net.minecraft.util.registry.Registry
 import net.pietrolinguini.mccourse.MCCourseMod
 
 object ModTags {
@@ -14,12 +14,12 @@ object ModTags {
         val ORICHALCUM_BLOCKS = createCommonTag("orichalcum_blocks")
         val ORICHALCUM_ORES = createCommonTag("orichalcum_ores")
 
-        private fun createTag(name: String): Tag.Identified<Block> {
-            return TagFactory.BLOCK.create(Identifier(MCCourseMod.MOD_ID, name))
+        private fun createTag(name: String): TagKey<Block> {
+            return TagKey.of(Registry.BLOCK_KEY, Identifier(MCCourseMod.MOD_ID, name))
         }
 
-        private fun createCommonTag(name: String): Tag.Identified<Block> {
-            return TagFactory.BLOCK.create(Identifier("c", name))
+        private fun createCommonTag(name: String): TagKey<Block> {
+            return TagKey.of(Registry.BLOCK_KEY, Identifier("c", name))
         }
     }
 
@@ -27,12 +27,12 @@ object ModTags {
         val ORICHALCUM_INGOTS = createCommonTag("orichalcum_ingots")
         val ORICHALCUM_NUGGETS = createCommonTag("orichalcum_nuggets")
 
-        private fun createTag(name: String): Tag.Identified<Item> {
-            return TagFactory.ITEM.create(Identifier(MCCourseMod.MOD_ID, name))
+        private fun createTag(name: String): TagKey<Item> {
+            return TagKey.of(Registry.ITEM_KEY, Identifier(MCCourseMod.MOD_ID, name))
         }
 
-        private fun createCommonTag(name: String): Tag.Identified<Item> {
-            return TagFactory.ITEM.create(Identifier("c", name))
+        private fun createCommonTag(name: String): TagKey<Item> {
+            return TagKey.of(Registry.ITEM_KEY, Identifier("c", name))
         }
     }
 }

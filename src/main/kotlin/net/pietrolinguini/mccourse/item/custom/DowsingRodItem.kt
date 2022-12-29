@@ -1,6 +1,7 @@
 package net.pietrolinguini.mccourse.item.custom
 
 import net.minecraft.block.Block
+import net.minecraft.block.BlockState
 import net.minecraft.client.gui.screen.Screen
 import net.minecraft.client.item.TooltipContext
 import net.minecraft.entity.player.PlayerEntity
@@ -29,9 +30,10 @@ class DowsingRodItem(settings: Settings?) : Item(settings) {
             var foundBlock = false
 
             for (i in 0..positionClicked.y) {
+                val stateBelow = context.world.getBlockState(positionClicked.down(i))
                 val blockBelow = context.world.getBlockState(positionClicked.down(i)).block
 
-                if (blockBelow.isValuableBlock()) {
+                if (stateBelow.isValuableBlock()) {
                     outputValuableCoordinates(player, blockBelow, positionClicked.down(i))
                     foundBlock = true
 
@@ -96,7 +98,6 @@ class DowsingRodItem(settings: Settings?) : Item(settings) {
         )
     }
 
-    private fun Block.isValuableBlock(): Boolean {
-        return ModTags.Blocks.DOWSING_ROD_DETECTABLE_BLOCKS.contains(this)
-    }
+    private fun BlockState.isValuableBlock(): Boolean =
+        isIn(ModTags.Blocks.DOWSING_ROD_DETECTABLE_BLOCKS)
 }

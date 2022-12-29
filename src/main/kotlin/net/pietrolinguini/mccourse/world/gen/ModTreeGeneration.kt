@@ -10,7 +10,7 @@ object ModTreeGeneration {
     fun generateTrees() {
         BiomeModifications.addFeature(
             BiomeSelectors.categories(Biome.Category.PLAINS),
-            GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.CHERRY_BLOSSOM_PLACED_KEY
+            GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.CHERRY_BLOSSOM_PLACED.key.get()
         )
     }
 }

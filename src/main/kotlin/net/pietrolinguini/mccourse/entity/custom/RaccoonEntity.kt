@@ -15,6 +15,10 @@ import net.minecraft.sound.SoundEvents
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 import software.bernie.geckolib3.core.IAnimatable
+import software.bernie.geckolib3.core.PlayState
+import software.bernie.geckolib3.core.builder.AnimationBuilder
+import software.bernie.geckolib3.core.controller.AnimationController
+import software.bernie.geckolib3.core.event.predicate.AnimationEvent
 import software.bernie.geckolib3.core.manager.AnimationData
 import software.bernie.geckolib3.core.manager.AnimationFactory
 
@@ -60,9 +64,19 @@ class RaccoonEntity(entityType: EntityType<out AnimalEntity>, world: World): Ani
 
     override fun createChild(world: ServerWorld?, entity: PassiveEntity?): PassiveEntity? = null
 
-    override fun registerControllers(p0: AnimationData?) {
-
+    override fun registerControllers(data: AnimationData) {
+        data.addAnimationController(AnimationController(this, "controller",
+            0f, this::predicate))
     }
 
     override fun getFactory() = factory
+
+    // ANIMATIONS
+    private fun <E: IAnimatable> predicate(event: AnimationEvent<E>): PlayState {
+        event.controller.setAnimation(
+            AnimationBuilder().addAnimation("animation.raccoon.${if (event.isMoving) "walk" else "idle"}", true)
+        )
+
+        return PlayState.CONTINUE
+    }
 }

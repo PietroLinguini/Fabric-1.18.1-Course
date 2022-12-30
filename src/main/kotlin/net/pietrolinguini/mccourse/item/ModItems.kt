@@ -10,10 +10,12 @@ import net.minecraft.item.HorseArmorItem
 import net.minecraft.item.Item
 import net.minecraft.item.ShovelItem
 import net.minecraft.item.SignItem
+import net.minecraft.item.SpawnEggItem
 import net.minecraft.util.Identifier
 import net.minecraft.util.registry.Registry
 import net.pietrolinguini.mccourse.MCCourseMod
 import net.pietrolinguini.mccourse.block.ModBlocks
+import net.pietrolinguini.mccourse.entity.ModEntities
 import net.pietrolinguini.mccourse.fluid.ModFluids
 import net.pietrolinguini.mccourse.item.custom.*
 import net.pietrolinguini.mccourse.sound.ModSounds
@@ -219,6 +221,10 @@ object ModItems {
         "magic_orichalcum_dust",
         Item(FabricItemSettings().group(ModItemGroups.COURSE))
     )
+
+    val RACCOON_SPAWN_EGG = registerItem("raccoon_spawn_egg",
+        SpawnEggItem(ModEntities.RACCOON, 0x948e8d, 0x3b3635,
+            FabricItemSettings().group(ModItemGroups.COURSE)))
 
     fun registerModItems() {
         println("Registering Mod Items for " + MCCourseMod.MOD_ID)

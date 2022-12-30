@@ -4,10 +4,13 @@ import net.fabricmc.api.ClientModInitializer
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry
 import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler
+import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry
 import net.fabricmc.fabric.api.client.screen.v1.ScreenEvents
 import net.fabricmc.fabric.api.client.screenhandler.v1.ScreenRegistry
 import net.minecraft.client.render.RenderLayer
 import net.pietrolinguini.mccourse.block.ModBlocks
+import net.pietrolinguini.mccourse.entity.ModEntities
+import net.pietrolinguini.mccourse.entity.client.RaccoonRenderer
 import net.pietrolinguini.mccourse.event.ReplaceTitleScreenEvent
 import net.pietrolinguini.mccourse.fluid.ModFluids
 import net.pietrolinguini.mccourse.screen.ModScreenHandlers
@@ -48,5 +51,7 @@ object MCCourseClient : ClientModInitializer {
         ScreenRegistry.register(ModScreenHandlers.ORICHALCUM_BLASTER_SCREEN_HANDLER, ::OrichalcumBlasterScreen)
 
         ScreenEvents.BEFORE_INIT.register(ReplaceTitleScreenEvent())
+
+        EntityRendererRegistry.register(ModEntities.RACCOON, ::RaccoonRenderer)
     }
 }

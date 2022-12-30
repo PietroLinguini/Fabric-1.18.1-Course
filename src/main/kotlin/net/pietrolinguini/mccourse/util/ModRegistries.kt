@@ -2,6 +2,7 @@ package net.pietrolinguini.mccourse.util
 
 import net.fabricmc.fabric.api.command.v1.CommandRegistrationCallback
 import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents
+import net.fabricmc.fabric.api.`object`.builder.v1.entity.FabricDefaultAttributeRegistry
 import net.fabricmc.fabric.api.registry.FuelRegistry
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry
 import net.minecraft.block.ComposterBlock
@@ -9,6 +10,8 @@ import net.pietrolinguini.mccourse.MCCourseMod
 import net.pietrolinguini.mccourse.block.ModBlocks
 import net.pietrolinguini.mccourse.command.ReturnHomeCommand
 import net.pietrolinguini.mccourse.command.SetHomeCommand
+import net.pietrolinguini.mccourse.entity.ModEntities
+import net.pietrolinguini.mccourse.entity.custom.RaccoonEntity
 import net.pietrolinguini.mccourse.event.ModPlayerEventCopyFrom
 import net.pietrolinguini.mccourse.item.ModItems
 
@@ -19,6 +22,7 @@ object ModRegistries {
         registerCommands()
         registerEvents()
         registerStrippables()
+        registerAttributes()
     }
 
     private fun registerFuels() {
@@ -46,5 +50,9 @@ object ModRegistries {
     private fun registerStrippables() {
         StrippableBlockRegistry.register(ModBlocks.CHERRY_BLOSSOM_LOG, ModBlocks.STRIPPED_CHERRY_BLOSSOM_LOG)
         StrippableBlockRegistry.register(ModBlocks.CHERRY_BLOSSOM_WOOD, ModBlocks.STRIPPED_CHERRY_BLOSSOM_WOOD)
+    }
+
+    private fun registerAttributes() {
+        FabricDefaultAttributeRegistry.register(ModEntities.RACCOON, RaccoonEntity.setAttributes())
     }
 }

@@ -11,13 +11,16 @@ import net.minecraft.entity.damage.DamageSource
 import net.minecraft.entity.data.DataTracker
 import net.minecraft.entity.data.TrackedData
 import net.minecraft.entity.data.TrackedDataHandlerRegistry
-import net.minecraft.entity.passive.AnimalEntity
 import net.minecraft.entity.passive.PassiveEntity
+import net.minecraft.entity.passive.TameableEntity
 import net.minecraft.entity.player.PlayerEntity
+import net.minecraft.item.Items
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.sound.SoundEvent
 import net.minecraft.sound.SoundEvents
+import net.minecraft.util.ActionResult
+import net.minecraft.util.Hand
 import net.minecraft.util.Util
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.LocalDifficulty
@@ -32,10 +35,12 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent
 import software.bernie.geckolib3.core.manager.AnimationData
 import software.bernie.geckolib3.core.manager.AnimationFactory
 
-class RaccoonEntity(entityType: EntityType<out AnimalEntity>, world: World): AnimalEntity(entityType, world), IAnimatable {
+class RaccoonEntity(entityType: EntityType<out TameableEntity>, world: World): TameableEntity(entityType, world), IAnimatable {
     companion object {
-        val DATA_ID_TYPE_VARIANT: TrackedData<Int> =
+        val TYPE_VARIANT_ID: TrackedData<Int> =
             DataTracker.registerData(RaccoonEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
+        val SITTING: TrackedData<Boolean> =
+            DataTracker.registerData(RaccoonEntity::class.java, TrackedDataHandlerRegistry.BOOLEAN)
 
         fun setAttributes(): DefaultAttributeContainer.Builder =
             createMobAttributes()
@@ -55,6 +60,8 @@ class RaccoonEntity(entityType: EntityType<out AnimalEntity>, world: World): Ani
         val thisRaccoon = this
         with(goalSelector) {
             add(0, SwimGoal(thisRaccoon))
+            add(1, SitGoal(thisRaccoon)) // Important that the Sit Goal is higher than WanderGoal!
+            add(2, TrackOwnerAttackerGoal(thisRaccoon))
             add(2, WanderAroundPointOfInterestGoal(thisRaccoon, 0.75, false))
             add(3, WanderAroundFarGoal(thisRaccoon, 0.75, 1f))
             add(4, LookAroundGoal(thisRaccoon))
@@ -87,11 +94,69 @@ class RaccoonEntity(entityType: EntityType<out AnimalEntity>, world: World): Ani
     // ANIMATIONS
     private fun <E: IAnimatable> predicate(event: AnimationEvent<E>): PlayState {
         event.controller.setAnimation(
-            AnimationBuilder().addAnimation("animation.raccoon.${if (event.isMoving) "walk" else "idle"}", true)
+            AnimationBuilder().addAnimation("animation.raccoon.${if (event.isMoving) "walk" else if (this.isSitting) "sitting" else "idle"}", true)
         )
 
         return PlayState.CONTINUE
     }
+
+    // TAMABLE
+    override fun interactMob(player: PlayerEntity, hand: Hand): ActionResult {
+        val itemStack = player.getStackInHand(hand)
+        val itemForTaming = Items.APPLE
+
+        // If you're trying to tame the raccoon
+        if (itemStack.item == itemForTaming && !isTamed) {
+            if (world.isClient)
+                return ActionResult.CONSUME
+            else {
+                if (!player.abilities.creativeMode)
+                    itemStack.decrement(1)
+                if (!world.isClient) {
+                    setOwner(player)
+                    navigation.recalculatePath()
+                    target = null
+                    world.sendEntityStatus(this, 7.toByte())
+                    setSit(true)
+                }
+
+                return ActionResult.SUCCESS
+            }
+        }
+
+        // If the raccoon is already tamed and right-clicking it
+        if (isTamed && !world.isClient && hand == Hand.MAIN_HAND) {
+            setSit(!isSitting)
+            return ActionResult.SUCCESS
+        }
+
+        // If you have an apple in hand
+        if (itemStack.item == itemForTaming)
+            return ActionResult.PASS
+
+        return super.interactMob(player, hand)
+    }
+
+    fun setSit(sitting: Boolean) {
+        dataTracker.set(SITTING, sitting)
+        isSitting = sitting
+    }
+
+    override fun isSitting(): Boolean = dataTracker.get(SITTING)
+
+    override fun setTamed(tamed: Boolean) {
+        super.setTamed(tamed)
+
+        val maxHealth = if (tamed) 60.0 else 30.0
+        val attackDamage = if (tamed) 4.0 else 2.0
+        val moveSpeed = if (tamed) 0.5 else 0.25
+
+        getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)?.baseValue = maxHealth
+        getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE)?.baseValue = attackDamage
+        getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED)?.baseValue = moveSpeed
+    }
+
+    override fun canBeLeashedBy(player: PlayerEntity) = false
 
     // VARIANTS
     override fun initialize(
@@ -108,10 +173,10 @@ class RaccoonEntity(entityType: EntityType<out AnimalEntity>, world: World): Ani
 
     fun getVariant() = RaccoonVariant.byId(getTypeVariant() and 255)
 
-    private fun getTypeVariant(): Int = dataTracker.get(DATA_ID_TYPE_VARIANT)
+    private fun getTypeVariant(): Int = dataTracker.get(TYPE_VARIANT_ID)
 
     private fun setVariant(variant: RaccoonVariant) {
-        dataTracker.set(DATA_ID_TYPE_VARIANT, variant.id and 255)
+        dataTracker.set(TYPE_VARIANT_ID, variant.id and 255)
     }
 
     override fun writeCustomDataToNbt(nbt: NbtCompound) {
@@ -121,11 +186,12 @@ class RaccoonEntity(entityType: EntityType<out AnimalEntity>, world: World): Ani
 
     override fun readCustomDataFromNbt(nbt: NbtCompound) {
         super.readCustomDataFromNbt(nbt)
-        dataTracker.set(DATA_ID_TYPE_VARIANT, nbt.getInt("Variant"))
+        dataTracker.set(TYPE_VARIANT_ID, nbt.getInt("Variant"))
     }
 
     override fun initDataTracker() {
         super.initDataTracker()
-        dataTracker.startTracking(DATA_ID_TYPE_VARIANT, 0)
+        dataTracker.startTracking(SITTING, false)
+        dataTracker.startTracking(TYPE_VARIANT_ID, 0)
     }
 }

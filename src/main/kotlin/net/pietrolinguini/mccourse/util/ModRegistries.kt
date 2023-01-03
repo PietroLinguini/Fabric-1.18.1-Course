@@ -12,6 +12,7 @@ import net.pietrolinguini.mccourse.command.ReturnHomeCommand
 import net.pietrolinguini.mccourse.command.SetHomeCommand
 import net.pietrolinguini.mccourse.entity.ModEntities
 import net.pietrolinguini.mccourse.entity.custom.RaccoonEntity
+import net.pietrolinguini.mccourse.entity.custom.TigerEntity
 import net.pietrolinguini.mccourse.event.ModPlayerEventCopyFrom
 import net.pietrolinguini.mccourse.item.ModItems
 
@@ -54,5 +55,6 @@ object ModRegistries {
 
     private fun registerAttributes() {
         FabricDefaultAttributeRegistry.register(ModEntities.RACCOON, RaccoonEntity.setAttributes())
+        FabricDefaultAttributeRegistry.register(ModEntities.TIGER, TigerEntity.setAttributes())
     }
 }

@@ -225,6 +225,9 @@ object ModItems {
     val RACCOON_SPAWN_EGG = registerItem("raccoon_spawn_egg",
         SpawnEggItem(ModEntities.RACCOON, 0x948e8d, 0x3b3635,
             FabricItemSettings().group(ModItemGroups.COURSE)))
+    val TIGER_SPAWN_EGG = registerItem("tiger_spawn_egg",
+        SpawnEggItem(ModEntities.TIGER, 0xfcb603, 0x242321,
+            FabricItemSettings().group(ModItemGroups.COURSE)))
 
     fun registerModItems() {
         println("Registering Mod Items for " + MCCourseMod.MOD_ID)

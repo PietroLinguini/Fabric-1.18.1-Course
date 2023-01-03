@@ -11,6 +11,7 @@ import net.minecraft.client.render.RenderLayer
 import net.pietrolinguini.mccourse.block.ModBlocks
 import net.pietrolinguini.mccourse.entity.ModEntities
 import net.pietrolinguini.mccourse.entity.client.RaccoonRenderer
+import net.pietrolinguini.mccourse.entity.client.TigerRenderer
 import net.pietrolinguini.mccourse.event.ReplaceTitleScreenEvent
 import net.pietrolinguini.mccourse.fluid.ModFluids
 import net.pietrolinguini.mccourse.screen.ModScreenHandlers
@@ -53,5 +54,6 @@ object MCCourseClient : ClientModInitializer {
         ScreenEvents.BEFORE_INIT.register(ReplaceTitleScreenEvent())
 
         EntityRendererRegistry.register(ModEntities.RACCOON, ::RaccoonRenderer)
+        EntityRendererRegistry.register(ModEntities.TIGER, ::TigerRenderer)
     }
 }

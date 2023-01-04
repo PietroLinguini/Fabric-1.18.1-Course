@@ -9,7 +9,8 @@
     "ModEntityDataSaver",
     "BlockEntityTypeMixin",
     "SignTypeAccessor",
-    "BrewingRecipeRegistryMixin"
+    "BrewingRecipeRegistryMixin",
+    "StructureFeatureAccessor"
   ],
   "client": [
     "ScreenMixin"

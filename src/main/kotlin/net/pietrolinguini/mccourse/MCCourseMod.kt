@@ -13,10 +13,13 @@ import net.pietrolinguini.mccourse.util.ModLootTableModifiers
 import net.pietrolinguini.mccourse.util.ModRegistries
 import net.pietrolinguini.mccourse.world.feature.ModConfiguredFeatures
 import net.pietrolinguini.mccourse.world.gen.ModWorldGen
+import net.pietrolinguini.mccourse.world.structures.ModStructures
+import org.apache.logging.log4j.LogManager
 
 @Suppress("UNUSED")
 object MCCourseMod: ModInitializer {
     const val MOD_ID = "mccourse"
+    val LOGGER = LogManager.getLogger(MOD_ID)
     override fun onInitialize() {
         ModConfigs.registerConfigs()
 
@@ -40,5 +43,7 @@ object MCCourseMod: ModInitializer {
 
         ModEffects.registerModEffects()
         ModPotions.registerPotions()
+
+        ModStructures.registerSkyStructureFeatures()
     }
 }

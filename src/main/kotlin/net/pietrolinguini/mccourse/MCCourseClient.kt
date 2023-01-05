@@ -8,15 +8,19 @@ import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry
 import net.fabricmc.fabric.api.client.screen.v1.ScreenEvents
 import net.fabricmc.fabric.api.client.screenhandler.v1.ScreenRegistry
 import net.minecraft.client.render.RenderLayer
+import net.minecraft.entity.Entity
 import net.pietrolinguini.mccourse.block.ModBlocks
 import net.pietrolinguini.mccourse.entity.ModEntities
 import net.pietrolinguini.mccourse.entity.client.RaccoonRenderer
 import net.pietrolinguini.mccourse.entity.client.TigerRenderer
+import net.pietrolinguini.mccourse.entity.client.armor.OrichalcumArmorRenderer
 import net.pietrolinguini.mccourse.event.ReplaceTitleScreenEvent
 import net.pietrolinguini.mccourse.fluid.ModFluids
+import net.pietrolinguini.mccourse.item.ModItems
 import net.pietrolinguini.mccourse.screen.ModScreenHandlers
 import net.pietrolinguini.mccourse.screen.OrichalcumBlasterScreen
 import net.pietrolinguini.mccourse.util.ModModelPredicateProvider
+import software.bernie.geckolib3.renderers.geo.GeoArmorRenderer
 
 object MCCourseClient : ClientModInitializer {
     override fun onInitializeClient() {
@@ -55,5 +59,8 @@ object MCCourseClient : ClientModInitializer {
 
         EntityRendererRegistry.register(ModEntities.RACCOON, ::RaccoonRenderer)
         EntityRendererRegistry.register(ModEntities.TIGER, ::TigerRenderer)
+
+        GeoArmorRenderer.registerArmorRenderer<Entity>(OrichalcumArmorRenderer(), ModItems.ORICHALCUM_BOOTS,
+            ModItems.ORICHALCUM_LEGGINGS, ModItems.ORICHALCUM_CHESTPLATE, ModItems.ORICHALCUM_HELMET)
     }
 }

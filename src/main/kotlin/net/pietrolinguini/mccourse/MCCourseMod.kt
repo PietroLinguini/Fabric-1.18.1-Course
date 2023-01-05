@@ -15,6 +15,7 @@ import net.pietrolinguini.mccourse.world.feature.ModConfiguredFeatures
 import net.pietrolinguini.mccourse.world.gen.ModWorldGen
 import net.pietrolinguini.mccourse.world.structures.ModStructures
 import org.apache.logging.log4j.LogManager
+import software.bernie.geckolib3.GeckoLib
 
 @Suppress("UNUSED")
 object MCCourseMod: ModInitializer {
@@ -45,5 +46,7 @@ object MCCourseMod: ModInitializer {
         ModPotions.registerPotions()
 
         ModStructures.registerSkyStructureFeatures()
+
+        GeckoLib.initialize()
     }
 }

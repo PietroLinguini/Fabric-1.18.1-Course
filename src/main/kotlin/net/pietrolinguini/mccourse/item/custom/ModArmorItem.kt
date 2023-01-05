@@ -12,7 +12,7 @@ import net.minecraft.sound.SoundEvents
 import net.minecraft.world.World
 import net.pietrolinguini.mccourse.item.ModArmorMaterial
 
-class ModArmorItem(material: ArmorMaterial?, slot: EquipmentSlot?, settings: Settings?) :
+open class ModArmorItem(material: ArmorMaterial?, slot: EquipmentSlot?, settings: Settings?) :
     ArmorItem(material, slot, settings) {
     companion object {
         val MATERIAL_TO_EFFECT_MAP =
@@ -58,6 +58,11 @@ class ModArmorItem(material: ArmorMaterial?, slot: EquipmentSlot?, settings: Set
     }
 
     private fun hasCorrectArmorOn(material: ArmorMaterial, player: PlayerEntity): Boolean {
+        for (armorStack in player.inventory.armor) {
+            if (armorStack.item !is ArmorItem)
+                return false
+        }
+
         val boots = player.inventory.getArmorStack(0).item as ArmorItem
         val leggings = player.inventory.getArmorStack(1).item as ArmorItem
         val breastplate = player.inventory.getArmorStack(2).item as ArmorItem

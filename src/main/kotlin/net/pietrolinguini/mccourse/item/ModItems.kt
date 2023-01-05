@@ -2,15 +2,7 @@ package net.pietrolinguini.mccourse.item
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings
 import net.minecraft.entity.EquipmentSlot
-import net.minecraft.item.AliasedBlockItem
-import net.minecraft.item.ArmorItem
-import net.minecraft.item.BowItem
-import net.minecraft.item.BucketItem
-import net.minecraft.item.HorseArmorItem
-import net.minecraft.item.Item
-import net.minecraft.item.ShovelItem
-import net.minecraft.item.SignItem
-import net.minecraft.item.SpawnEggItem
+import net.minecraft.item.*
 import net.minecraft.util.Identifier
 import net.minecraft.util.registry.Registry
 import net.pietrolinguini.mccourse.MCCourseMod
@@ -115,7 +107,7 @@ object ModItems {
 
     val ORICHALCUM_HELMET = registerItem(
         "orichalcum_helmet",
-        ModArmorItem(
+        OrichalcumArmorItem(
             ModArmorMaterial.ORICHALCUM,
             EquipmentSlot.HEAD,
             FabricItemSettings().group(ModItemGroups.COURSE)
@@ -123,7 +115,7 @@ object ModItems {
     )
     val ORICHALCUM_CHESTPLATE = registerItem(
         "orichalcum_chestplate",
-        ArmorItem(
+        OrichalcumArmorItem(
             ModArmorMaterial.ORICHALCUM,
             EquipmentSlot.CHEST,
             FabricItemSettings().group(ModItemGroups.COURSE)
@@ -131,7 +123,7 @@ object ModItems {
     )
     val ORICHALCUM_LEGGINGS = registerItem(
         "orichalcum_leggings",
-        ArmorItem(
+        OrichalcumArmorItem(
             ModArmorMaterial.ORICHALCUM,
             EquipmentSlot.LEGS,
             FabricItemSettings().group(ModItemGroups.COURSE)
@@ -139,7 +131,7 @@ object ModItems {
     )
     val ORICHALCUM_BOOTS = registerItem(
         "orichalcum_boots",
-        ArmorItem(
+        OrichalcumArmorItem(
             ModArmorMaterial.ORICHALCUM,
             EquipmentSlot.FEET,
             FabricItemSettings().group(ModItemGroups.COURSE)

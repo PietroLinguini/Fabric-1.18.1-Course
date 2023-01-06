@@ -11,6 +11,7 @@ import net.pietrolinguini.mccourse.potion.ModPotions
 import net.pietrolinguini.mccourse.recipe.ModRecipes
 import net.pietrolinguini.mccourse.util.ModLootTableModifiers
 import net.pietrolinguini.mccourse.util.ModRegistries
+import net.pietrolinguini.mccourse.villager.ModVillagers
 import net.pietrolinguini.mccourse.world.feature.ModConfiguredFeatures
 import net.pietrolinguini.mccourse.world.gen.ModWorldGen
 import net.pietrolinguini.mccourse.world.structures.ModStructures
@@ -48,5 +49,7 @@ object MCCourseMod: ModInitializer {
         ModStructures.registerSkyStructureFeatures()
 
         GeckoLib.initialize()
+
+        ModVillagers.setupPOIS()
     }
 }

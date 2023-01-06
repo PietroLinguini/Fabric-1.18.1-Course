@@ -72,5 +72,7 @@
 
   "effect.mccourse.freeze": "Freeze",
 
-  "mccourse.dowsing_rod_found_ore": "Your dowsing rod found ore"
+  "mccourse.dowsing_rod_found_ore": "Your dowsing rod found ore",
+
+  "entity.minecraft.villager.blastmaster": "Blastmaster"
 }

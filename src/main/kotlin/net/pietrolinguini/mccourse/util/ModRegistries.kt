@@ -20,6 +20,7 @@ import net.pietrolinguini.mccourse.entity.custom.RaccoonEntity
 import net.pietrolinguini.mccourse.entity.custom.TigerEntity
 import net.pietrolinguini.mccourse.event.ModPlayerEventCopyFrom
 import net.pietrolinguini.mccourse.item.ModItems
+import net.pietrolinguini.mccourse.villager.ModVillagers
 
 object ModRegistries {
     fun registerModStuffs() {
@@ -80,6 +81,27 @@ object ModRegistries {
                 ItemStack(ModItems.ORICHALCUM_PAXEL, 1),
                 12, 120, 0.08f)
             }
+        }
+
+        TradeOfferHelper.registerVillagerOffers(ModVillagers.BLAST_MASTER, 1) { factories ->
+            factories.add { entity, random -> TradeOffer(
+                ItemStack(Items.EMERALD, 9),
+                ItemStack(ModItems.ORICHALCUM_PAXEL, 1),
+                12, 3, 0.08f
+            )}
+            factories.add { entity, random -> TradeOffer(
+                ItemStack(Items.EMERALD, 5),
+                ItemStack(ModItems.ORICHALCUM_PICKAXE, 1),
+                12, 3, 0.08f
+            )}
+        }
+
+        TradeOfferHelper.registerVillagerOffers(ModVillagers.BLAST_MASTER, 2) { factories ->
+            factories.add { entity, random -> TradeOffer(
+                ItemStack(Items.EMERALD, 3),
+                ItemStack(ModItems.ORICHALCUM_SHOVEL, 1),
+                12, 3, 0.08f
+            )}
         }
     }
 }
